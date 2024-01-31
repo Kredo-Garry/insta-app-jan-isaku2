@@ -47,7 +47,7 @@
                         <p class="fw-bold text-secondary">Suggestions For You</p>
                     </div>
                     <div class="col text-end">
-                        <a href="#" class="fw-bold text-decoration-none text-dark">See All</a>
+                        <a href="{{ route('allusers') }}" class="fw-bold text-decoration-none text-dark">See All</a>
                     </div>
 
                     @foreach ($suggested_users as $user)
@@ -67,7 +67,8 @@
                             <div class="col-auto">
                                 <form action="{{ route('follow.store', $user->id) }}" method="post">
                                     @csrf
-                                    <button type="submit" class="btn border-0 bg-transparent p-0 text-primary btn-sm">
+                                    {{-- <button type="submit" class="btn border-0 bg-transparent p-0 text-primary btn-sm"> --}}
+                                    <button type="submit" class="btn btn-primary text-white btn-sm">
                                         Follow
                                     </button>
                                 </form>

@@ -66,6 +66,8 @@ Route::group(['middleware' => 'auth'], function(){
 
     Route::get('/profile/{id}/followers', [ProfileController::class, 'followers'])->name('profile.followers');
     Route::get('/profile/{id}/following', [ProfileController::class, 'following'])->name('profile.following');
+    /* Route::get('/profile/{id}/userslist', [ProfileController::class, 'userslist'])->name('profile.userslist'); */
+    Route::get('/profile/allusers', [ProfileController::class, 'showAllUsers'])->name('allusers');
 
     //Admin Section
     Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'admin'], function(){

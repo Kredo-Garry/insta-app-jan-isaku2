@@ -60,4 +60,27 @@ class ProfileController extends Controller
         $user = $this->user->findOrFail($id);
         return view('users.profile.following')->with('user', $user);
     }
+
+    /* public function seeAllUsers(){
+        $all_users = $this->user->all()->except(Auth::user()->id);
+        return view('users.profile.userslist')->with('all_users', $all_users);        
+    } */
+
+    public function showAllUsers(){
+        $all_users = $this->getAllSuggestedUsers();
+        return view('users.profile.userslist')->with('all_users', $all_users);
+    }
+
+    public function getAllSuggestedUsers(){
+        $allsuggested_users = $this->user->all()->except(Auth::user()->id);
+        $suggested_users = [];
+
+        foreach($allsuggested_users as $user){
+            if(!$user->isFollowed()){
+                $suggested_users[] = $user;
+            }
+        }
+
+        return $suggested_users;
+    }
 }

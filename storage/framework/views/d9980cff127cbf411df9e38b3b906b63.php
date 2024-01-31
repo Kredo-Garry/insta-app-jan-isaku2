@@ -45,7 +45,7 @@
                         <p class="fw-bold text-secondary">Suggestions For You</p>
                     </div>
                     <div class="col text-end">
-                        <a href="#" class="fw-bold text-decoration-none text-dark">See All</a>
+                        <a href="<?php echo e(route('allusers')); ?>" class="fw-bold text-decoration-none text-dark">See All</a>
                     </div>
 
                     <?php $__currentLoopData = $suggested_users; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
@@ -65,7 +65,8 @@
                             <div class="col-auto">
                                 <form action="<?php echo e(route('follow.store', $user->id)); ?>" method="post">
                                     <?php echo csrf_field(); ?>
-                                    <button type="submit" class="btn border-0 bg-transparent p-0 text-primary btn-sm">
+                                    
+                                    <button type="submit" class="btn btn-primary text-white btn-sm">
                                         Follow
                                     </button>
                                 </form>

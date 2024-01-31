@@ -42,3 +42,15 @@ if it is equal to 1 , meaning that user is not an admin.
 
 Seeder ( Datebase Seeder) - What is this ?
 This databese seeder will help us create or insert records into the database.
+
+**************************************************
+
+Collaborative Project/Feature: To display all the users list into a separate page
+1. When the user is going click on the "See All" link, the will be redirect
+   to a separate page showing akk the lists of users.
+
+   A. Create a method: seeAllUsers()
+   B. Create the blade file: userslist.blade.php
+   C. Route
+
+   *************************************************
