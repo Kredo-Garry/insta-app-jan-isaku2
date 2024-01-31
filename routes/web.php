@@ -55,6 +55,8 @@ Route::group(['middleware' => 'auth'], function(){
 
     // This route si use for updating user data
     Route::patch('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
+    Route::patch('/profile/updatepassword', [ProfileController::class, 'updatePassword'])->name('profile.updatepassword');
+    //Route::patch('/profile/update/updatepassword', [ProfileController::class, 'updatePassword'])->name('profile.updatepassword');
 
     // Route for Likes
     Route::post('/like/{post_id}/store', [LikeController::class, 'store'])->name('like.store');

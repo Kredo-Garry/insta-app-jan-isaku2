@@ -54,3 +54,8 @@ Collaborative Project/Feature: To display all the users list into a separate pag
    C. Route
 
    *************************************************
+
+   edit password
+   Create old password
+   Create new password
+   save password

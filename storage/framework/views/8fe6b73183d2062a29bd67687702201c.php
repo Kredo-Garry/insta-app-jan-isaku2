@@ -74,14 +74,68 @@ if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?>
                             <p class="text-danger small"><?php echo e($message); ?></p>
-                        <?php unset($message);
+                    <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
                 </div>
 
                 <button type="submit" class="btn btn-warning px-5">Save</button>
-            </div>
+
+                
+            </form>
+
+            <form action="<?php echo e(route('profile.updatepassword')); ?>" method="post" class="mt-5 bg-white shadow rounded-3 p-5">
+                <?php echo csrf_field(); ?>
+                <?php echo method_field('PATCH'); ?>
+
+                <H2 class="h3 mb-3 fw-light text-muted">Update Password</H2>
+
+                <div class="mb-3">
+                    <label for="current-password" class="form-label fw-bolf">Current Password</label>
+                    <input type="password" name="current_password" id="current-pasword" class="form-control">
+                    <?php if(session('current_password_error')): ?>
+                        <p class="text-danger small"><?php echo e(session('current_password_error')); ?></p>
+                    <?php endif; ?>
+                    <?php $__errorArgs = ['current_password'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                        <p class="text-danger small"><?php echo e($message); ?></p>
+                    <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                </div>
+                <div class="mb-3">
+                    <label for="new-password" class="form-label fw-bold">New Password</label>
+                    <input type="password" name="new_password" id="new-password" class="form-control" aria-describedby="password-info">
+                    <div class="form-text" id="password-info">
+                        Your password must be atleast 8 characters long, and contain letters and numbers.
+                    </div>
+                    <?php if(session('new_password_error')): ?>
+                        <p class="text-danger small"><?php echo e(session('new_password_error')); ?></p>
+                    <?php endif; ?>
+                    <?php $__errorArgs = ['new_password'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                        <p class="text-danger small"><?php echo e($message); ?></p>
+                    <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                </div>
+                <div class="mb-3">
+                    <label for="new-password-confirmation" class="form-label fw-bold">Confirm New Password</label>
+                    <input type="password" name="new_password_confirmation" id="new-password-confirmation" class="form-control">
+                </div>
+                <button type="submit" class="btn btn-warning px-5">Update Password</button>
+            </form>
+            
+            
         </div>
      </div>
 <?php $__env->stopSection(); ?>

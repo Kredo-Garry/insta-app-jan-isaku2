@@ -51,11 +51,105 @@
 
                     @error('introduction')
                             <p class="text-danger small">{{ $message }}</p>
-                        @enderror
+                    @enderror
                 </div>
 
                 <button type="submit" class="btn btn-warning px-5">Save</button>
-            </div>
+
+                {{-- <div class="password">
+                    <div class="mb-3">
+                        <label for="old-password" class="form-label">Old Password</label>
+                        <input type="password" name="old-password" id="old-password" class="form-control" value="{{ old('password', $user->password) }}">
+
+                        @error('old-password')
+                            <p class="text-danger small">{{ $message }}</p>
+                        @enderror
+                    </div>
+                    <div class="mb-3">
+                        <label for="new-password" class="form-label">New Password</label>
+                        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+
+                        @error('password')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+
+                    <button type="submit" class="btn btn-warning px-5">Save</button>
+                </div>                    --}}
+            </form>
+
+            <form action="{{ route('profile.updatepassword') }}" method="post" class="mt-5 bg-white shadow rounded-3 p-5">
+                @csrf
+                @method('PATCH')
+
+                <H2 class="h3 mb-3 fw-light text-muted">Update Password</H2>
+
+                <div class="mb-3">
+                    <label for="current-password" class="form-label fw-bolf">Current Password</label>
+                    <input type="password" name="current_password" id="current-pasword" class="form-control">
+                    @if (session('current_password_error'))
+                        <p class="text-danger small">{{ session('current_password_error') }}</p>
+                    @endif
+                    @error('current_password')
+                        <p class="text-danger small">{{ $message }}</p>
+                    @enderror
+                </div>
+                <div class="mb-3">
+                    <label for="new-password" class="form-label fw-bold">New Password</label>
+                    <input type="password" name="new_password" id="new-password" class="form-control" aria-describedby="password-info">
+                    <div class="form-text" id="password-info">
+                        Your password must be atleast 8 characters long, and contain letters and numbers.
+                    </div>
+                    @if (session('new_password_error'))
+                        <p class="text-danger small">{{ session('new_password_error') }}</p>
+                    @endif
+                    @error('new_password')
+                        <p class="text-danger small">{{ $message }}</p>
+                    @enderror
+                </div>
+                <div class="mb-3">
+                    <label for="new-password-confirmation" class="form-label fw-bold">Confirm New Password</label>
+                    <input type="password" name="new_password_confirmation" id="new-password-confirmation" class="form-control">
+                </div>
+                <button type="submit" class="btn btn-warning px-5">Update Password</button>
+            </form>
+            
+            {{-- <form action="{{ route('profile.updatepassword') }}" method="post" class="mt-5 bg-white shadow rounded-3 p-5">
+                @csrf
+                @method('PATCH')
+                <H2 class="h3 mb-3 fw-light text-muted">Update Password</H2>
+
+                <div class="mb-3">
+                    <label for="current-password" class="form-label fw-bold">Current Password</label>
+                    <input type="password" name="current_password" id="current-password" class="form-control">
+                    @if (session('current_password_error'))
+                        <p class="text-danger small">{{ session('current_password_error') }}</p>
+                    @endif
+                    @error('current_password')
+                        <p class="text-danger small">{{ $message }}</p>
+                    @enderror
+                </div>
+                <div class="mb-3">
+                    <label for="new-password" class="form-label fw-bold">New Password</label>
+                    <input type="password" name="new_password" id="new-password" class="form-control" aria-describedby="password-info">
+                    <div class="form-text" id="password-info">
+                        Your password must be atleast 8 characters long, and contain letters and numbers.
+                    </div>
+                    @if (session('new_password_error'))
+                        <p class="text-danger small">{{ session('new_password_error') }}</p>
+                    @endif
+                    @error('new_password')
+                        <p class="text-danger small">{{ $message }}</p>
+                    @enderror
+                </div>
+                <div class="mb-3">
+                    <label for="new-password-confirmation" class="form-label fw-bold">Confirm New Password</label>
+                    <input type="password" name="new_password_confirmation" id="new-password-confirmation" class="form-control">
+                </div>
+                <button type="submit" class="btn btn-warning px-5">Update Password</button>
+            </form> --}}
         </div>
      </div>
 @endsection
